@@ -103,7 +103,7 @@ footer{color:var(--mute);font-size:12px;margin-top:6px}
 .seg button.on{background:#123a4a;color:#9fe3ff}
 button.mini{min-height:30px;padding:3px 12px;font-size:13px}
 @media (max-width:1000px){.s8grid{grid-template-columns:minmax(0,1fr)}}
-.warnbar{background:#3a2a12;border:1px solid #6b4a1a;color:#ffd08a;padding:8px 12px;border-radius:8px;margin-bottom:10px;font-size:13.5px}.warnbar[hidden]{display:none}
+.warnbar{background:#3a2a12;border:1px solid #6b4a1a;color:#ffd08a;padding:8px 12px;border-radius:8px;margin-bottom:10px;font-size:13.5px}.warnbar[hidden]{display:none}.warnbar.upd{background:#12304a;border-color:#1f5b70;color:#9fe3ff;cursor:pointer}
 #p-m{margin-bottom:12px}
 .mtfTop{display:grid;gap:6px;padding:10px 12px;border-radius:10px;background:#1b2528;margin-bottom:10px;font-size:13.5px;line-height:1.6}
 .mtfTop b.big{font-size:18px;line-height:1.4}
@@ -203,6 +203,7 @@ table.mtf tbody.fold tr:not(.gh){display:none}
 </header>
 
 <div class="warnbar" id="tabWarn" hidden></div>
+<div class="warnbar upd" id="verBar" hidden></div>
 <section class="squad" id="squad"></section>
 
 <section class="panel" id="p-m" style="--c:#00c3ff">
@@ -1613,6 +1614,16 @@ function tabBeat() { try { const now = Date.now(), m = JSON.parse(localStorage.g
   if (n > 0) el.textContent = `⚠ 另外还开着 ${n} 个盯盘小队页面。每个页面都会单独连 OKX、拉一大批历史数据，OKX 限制同一个网络的连接次数和请求频率，开多了容易连不上。建议把其他页面关掉，只留这一个。`; } catch (e) {} }
 tabBeat(); setInterval(tabBeat, 5000);
 addEventListener('beforeunload', () => { try { const m = JSON.parse(localStorage.getItem('dp_tabs') || '{}'); delete m[TAB]; localStorage.setItem('dp_tabs', JSON.stringify(m)); } catch (e) {} });
+
+// ---------- 新版本提醒（放到网上时检查；本地文件打开时不检查） ----------
+const APP_VER = '2026-11-27c';
+async function verCheck() {
+  if (!/^https?:$/.test(location.protocol) || document.hidden) return;
+  try { const t = await (await fetch(location.pathname + '?t=' + Date.now(), {cache:'no-store'})).text(), m = t.match(/const APP_VER = '([^']+)'/);
+    if (m && m[1] !== APP_VER) { const el = $('verBar'); el.hidden = false; el.textContent = '🔄 盯盘小队有新版本了，点这里刷新';
+      el.onclick = () => { location.href = location.pathname + '?v=' + encodeURIComponent(m[1]); }; } } catch (e) {}
+}
+setTimeout(verCheck, 8000); setInterval(verCheck, 300000); document.addEventListener('visibilitychange', verCheck);
 
 // ---------- 启动 ----------
 (async () => {
