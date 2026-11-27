@@ -144,12 +144,51 @@ table.mtf tbody.fold tr:not(.gh){display:none}
 <header>
   <h1>盯盘小队</h1>
   <select id="instSel" aria-label="选择合约">
-    <option value="BTC-USDT-SWAP">BTC 比特币 · 永续</option>
-    <option value="ETH-USDT-SWAP">ETH 以太坊 · 永续</option>
-    <option value="SOL-USDT-SWAP">SOL · 永续</option>
-    <option value="XRP-USDT-SWAP">XRP · 永续</option>
-    <option value="DOGE-USDT-SWAP">DOGE 狗狗币 · 永续</option>
-    <option value="SNDK-USDT-SWAP">SNDK 闪迪 · 永续</option>
+    <optgroup label="加密货币 · 永续">
+    <option value="BTC-USDT-SWAP">BTC 比特币</option>
+    <option value="ETH-USDT-SWAP">ETH 以太坊</option>
+    <option value="SOL-USDT-SWAP">SOL</option>
+    <option value="XRP-USDT-SWAP">XRP</option>
+    <option value="DOGE-USDT-SWAP">DOGE 狗狗币</option>
+    </optgroup>
+    <optgroup label="股票 · 永续">
+    <option value="SKHYNIX-USDT-SWAP">SKHYNIX SK 海力士（韩股）</option>
+    <option value="SKHY-USDT-SWAP">SKHY SK 海力士（美股）</option>
+    <option value="SNDK-USDT-SWAP">SNDK 闪迪</option>
+    <option value="MU-USDT-SWAP">MU 美光</option>
+    <option value="LITE-USDT-SWAP">LITE Lumentum</option>
+    <option value="SOXL-USDT-SWAP">SOXL 半导体三倍做多</option>
+    <option value="DELL-USDT-SWAP">DELL 戴尔</option>
+    <option value="HPE-USDT-SWAP">HPE 慧与</option>
+    <option value="AAOI-USDT-SWAP">AAOI 应用光电</option>
+    <option value="MRNA-USDT-SWAP">MRNA 莫德纳</option>
+    <option value="NVDA-USDT-SWAP">NVDA 英伟达</option>
+    <option value="AAPL-USDT-SWAP">AAPL 苹果</option>
+    <option value="TSLA-USDT-SWAP">TSLA 特斯拉</option>
+    <option value="TSM-USDT-SWAP">TSM 台积电</option>
+    <option value="LRCX-USDT-SWAP">LRCX 泛林</option>
+    <option value="NBIS-USDT-SWAP">NBIS Nebius</option>
+    <option value="KORU-USDT-SWAP">KORU 韩国三倍做多</option>
+    <option value="AMZN-USDT-SWAP">AMZN 亚马逊</option>
+    <option value="ASML-USDT-SWAP">ASML 阿斯麦</option>
+    <option value="BE-USDT-SWAP">BE Bloom Energy</option>
+    <option value="GOOGL-USDT-SWAP">GOOGL 谷歌</option>
+    <option value="AMD-USDT-SWAP">AMD 超威</option>
+    <option value="GLW-USDT-SWAP">GLW 康宁</option>
+    <option value="IREN-USDT-SWAP">IREN IREN</option>
+    <option value="QQQ-USDT-SWAP">QQQ 纳指 100</option>
+    <option value="WDC-USDT-SWAP">WDC 西部数据</option>
+    <option value="MRVL-USDT-SWAP">MRVL 迈威尔</option>
+    <option value="GE-USDT-SWAP">GE 通用电气</option>
+    <option value="AVGO-USDT-SWAP">AVGO 博通</option>
+    <option value="KLAC-USDT-SWAP">KLAC 科磊</option>
+    <option value="MSTR-USDT-SWAP">MSTR 微策略</option>
+    <option value="ANTHROPIC-USDT-SWAP">ANTHROPIC Anthropic</option>
+    <option value="CRCL-USDT-SWAP">CRCL Circle</option>
+    <option value="AXTI-USDT-SWAP">AXTI AXT</option>
+    <option value="CIEN-USDT-SWAP">CIEN Ciena</option>
+    <option value="META-USDT-SWAP">META Meta</option>
+    </optgroup>
     <option value="__custom">其他（手动输入代码）…</option>
   </select>
   <input id="inst" value="BTC-USDT-SWAP" aria-label="合约代码，输入后按回车" placeholder="如 ADA-USDT-SWAP，回车" spellcheck="false" hidden>
